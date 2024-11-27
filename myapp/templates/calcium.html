@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shree Diagnostic Lab - Calcium Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .test-details, .pricing, .appointment, .contact {
+            background: white;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            background: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        form label {
+            margin: 10px 0 5px;
+        }
+        form input, form select {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        form input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        form input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Shree Diagnostic Lab</h1>
+    <p>Your Health, Our Priority</p>
+</header>
+
+<nav>
+    <a href="#test-details">Test Details</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#appointment">Book Appointment</a>
+    <a href="#contact">Contact Us</a>
+</nav>
+
+<div class="container">
+    <section id="test-details" class="test-details">
+        <h2>Calcium Test Details</h2>
+        <p>We offer a comprehensive calcium test to help diagnose, treat, and monitor various health conditions related to calcium levels. Our calcium test includes:</p>
+        <ul>
+            <li>Serum Calcium Test</li>
+            <li>Ionized Calcium Test</li>
+            <li>Urine Calcium Test</li>
+        </ul>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <h2>Pricing</h2>
+        <table>
+            <tr>
+                <th>Test</th>
+                <th>Price</th>
+            </tr>
+            <tr>
+                <td>Serum Calcium Test</td>
+                <td>500/-</td>
+            </tr>
+            <tr>
+                <td>Ionized Calcium Test</td>
+                <td>700/-</td>
+            </tr>
+            <tr>
+                <td>Urine Calcium Test</td>
+                <td>600/-</td>
+            </tr>
+        </table>
+    </section>
+
+    <section id="appointment" class="appointment">
+        <h2>Book an Appointment</h2>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="token_id" value="{{token}}" hidden>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="mobile" required>
+            <label for="test">Select Test:</label>
+            <select id="test" name="testname">
+                <option value="serum">Serum Calcium Test</option>
+                <option value="ionized">Ionized Calcium Test</option>
+                <option value="urine">Urine Calcium Test</option>
+            </select>
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+            <label for="date">Preferred Date:</label>
+            <input type="date" id="date" name="date" required>
+            <input type="submit" value="Book Appointment">
+        </form>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or need further information, please feel free to contact us:</p>
+        <p>Email: info@shreediagnosticlab.com</p>
+        <p>Phone: 9313819231 </p>
+        <p>Address: Shop No.7, Amar Complex, Behind New Bus Stand, Jasdan, 360050</p>
+    </section>
+</div>
+
+</body>
+</html>
